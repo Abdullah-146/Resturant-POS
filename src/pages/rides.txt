@@ -1,0 +1,127 @@
+import React, { useState, useEffect } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+import ProgressCard from "../components/ProgressCard";
+import Tabs from "../components/Tabs";
+import MenuIcon from "@mui/icons-material/Menu";
+import "../components/Scrollbar.css";
+const Rides = () => {
+  const [progressCards, setProgressCards] = useState([]);
+  const [hidden, sethidden] = useState(true);
+  const [hideside, sethideside] = useState(false);
+  useEffect(() => {
+    let mount = true;
+
+    if (mount) {
+      setProgressCards([
+        {
+          id: "23442",
+          done: false,
+          pickup: "Street abc, ABC Road, Town Abc",
+          dropoff: "Street abc, ABC Road, Town Abc",
+        },
+        {
+          id: "23234",
+          done: true,
+          pickup: "Street abc, ABC Road, Town Abc",
+          dropoff: "Street abc, ABC Road, Town Abc",
+        },
+        {
+          id: "54891",
+          done: false,
+          pickup: "Street abc, ABC Road, Town Abc",
+          dropoff: "Street abc, ABC Road, Town Abc",
+        },
+        {
+          id: "54891",
+          done: false,
+          pickup: "Street abc, ABC Road, Town Abc",
+          dropoff: "Street abc, ABC Road, Town Abc",
+        },
+        {
+          id: "54891",
+          done: false,
+          pickup: "Street abc, ABC Road, Town Abc",
+          dropoff: "Street abc, ABC Road, Town Abc",
+        },
+        {
+          id: "54891",
+          done: false,
+          pickup: "Street abc, ABC Road, Town Abc",
+          dropoff: "Street abc, ABC Road, Town Abc",
+        },
+      ]);
+      return () => (mount = false);
+    }
+  }, []);
+  console.log(progressCards);
+  return (
+    <div className="flex flex-1">
+      <div className="flex flex-col bg-[#f6f6f6f] min-w-[30rem] max-w-[20%] max-h-screen px-[1rem] pt-[1rem]  ">
+        <p className="text-[2rem] text-[#2f2f2f] font-Poppins leading-[3rem] font-semibold">
+          All Rides
+        </p>
+        <div className="relative mb-4">
+          <span>
+            <SearchIcon className="text-[#2f2f2f] text-3xl  absolute left-[0.9rem] bottom-[1.29rem] " />
+          </span>
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Search Active, completed rides"
+            className="bg-[#ffffff] w-[27.188rem] h-[4rem] rounded-[0.625rem] p-2 mt-[1rem] border-none pl-[2.8rem] flex-[7] outline-none"
+          />
+        </div>
+        <div className="overflow-y-auto">
+          {progressCards.map(({ id, done, pickup, dropoff }) => {
+            return (
+              <div className="mt-4">
+                <ProgressCard
+                  id={id}
+                  done={done}
+                  pickup={pickup}
+                  dropoff={dropoff}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className={`mx-auto ${hidden ? "hidden" : ""}   mt-10`}>
+        <Tabs
+          RiderImgSrc={
+            "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+          }
+          Ridername="ABDULLAH"
+          RiderCity={"Wah_Cantt"}
+          RiderPhone={"03485517655"}
+          RiderEmail={"Abdullah@gmail.com"}
+          DriverImgSrc={
+            "https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+          }
+          Drivername="Muzammil"
+          DriverCity={"Pindi"}
+          DriverPhone={"0348564455"}
+          DriverEmail={"Muzammil@gmail.com"}
+          CarImg="https://www.kindpng.com/picc/m/13-136992_toyota-corolla-car-png-transparent-png.png"
+          CarName={"Toyota Corolla"}
+          License={"LXE 5364"}
+          Year={"2012"}
+          Color={"Green"}
+        />
+      </div>
+      <div
+        className={`hamburger ${
+          hidden ? "" : "hidden"
+        } w-[2.2rem] h-[2.2rem] rounded-full bg-white flex items-center justify-center absolute top-6 right-5 `}
+        onClick={() => {
+          sethidden(!hidden);
+        }}
+      >
+        <MenuIcon />
+      </div>
+    </div>
+  );
+};
+
+export default Rides;
