@@ -15,7 +15,7 @@ import Products from "./pages/Products";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./main.css";
 import Notifications from "./pages/Notifications";
-import Letsdothis from "./pages/letsdothis";;
+import Letsdothis from "./pages/letsdothis";
 // import dotenv from 'dotenv';
 
 // dotenv.config();
